@@ -14,3 +14,14 @@ fun createPresenter(
   
   } 
 """.trimIndent()
+
+fun createPresenterModel(
+    presenterModelPackageName: String = PackageManager.presenterModelPackageName,
+    className: String
+) = """
+  package $presenterModelPackageName
+  
+  interface ${className}ViewItemInterface {
+  
+  }
+""".trimIndent()

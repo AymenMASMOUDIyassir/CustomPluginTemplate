@@ -2,7 +2,7 @@
 <idea-plugin>
     <id>com.github.libliboom.customplugintemplate</id>
     <name>CleanArch</name>
-    <vendor>libliboom</vendor>
+    <vendor>Yassir</vendor>
 
     <depends>org.jetbrains.android</depends>
     <depends>org.jetbrains.kotlin</depends>

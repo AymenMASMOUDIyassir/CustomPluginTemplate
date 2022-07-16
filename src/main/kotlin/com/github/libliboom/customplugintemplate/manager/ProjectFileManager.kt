@@ -8,13 +8,7 @@ import com.intellij.psi.PsiDirectory
 import com.intellij.psi.PsiManager
 
 enum class Path(val type: Int) {
-    //APP(0), PRESENTATION(1), REPOSITORY(2), DATASOURCE(3), DOMAIN(4);
     INTERACTOR(0), PRESENTER(1), VIEW(2), MODEL(3);
-
-    companion object {
-        private val map = values().associateBy(Path::type)
-        fun from(type: Int) = map[type]
-    }
 }
 
 class ProjectFileManager(
@@ -24,8 +18,6 @@ class ProjectFileManager(
     repositoryPath: String = "repository/src/main/java",
     datasourcePath: String = "datasource/src/main/java",
     domainPath: String = "domain/src/main/java",
-    businessLogicPath: String = "businessLogic/src/main/java",
-    userInterfacePath: String = "userInterface/src/main/java",
     interactorPath: String = "interactor/src/main/java",
     presenterPath: String = "presenter/src/main/java",
     viewPath: String = "view/src/main/java",
@@ -40,11 +32,6 @@ class ProjectFileManager(
     )
 
     private val resources = mutableListOf<Triple<Path, PsiDirectory?, String>>(
-        /*Triple(APP, null, appPath),
-        Triple(PRESENTATION, null, presentationPath),
-        Triple(REPOSITORY, null, repositoryPath),
-        Triple(DATASOURCE, null, datasourcePath),
-        Triple(DOMAIN, null, domainPath)*/
         Triple(INTERACTOR, null, interactorPath),
         Triple(PRESENTER, null, presenterPath),
         Triple(VIEW, null, viewPath),

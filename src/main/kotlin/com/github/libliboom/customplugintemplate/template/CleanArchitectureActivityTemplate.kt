@@ -14,8 +14,8 @@ import com.android.tools.idea.wizard.template.template
 
 val cleanArchFragmentTemplate
     get() = template {
-      name = "Clean Architecture Feature"
-      description = "Create files for clean architecture"
+      name = "Clean Architecture Packages"
+      description = "Create Packages for Clean Architecture"
       minApi = 23
       category = Category.Other
       formFactor = FormFactor.Mobile

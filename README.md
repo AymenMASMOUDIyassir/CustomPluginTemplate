@@ -17,9 +17,18 @@
 <!-- Plugin description -->
 This Fancy IntelliJ Platform Plugin is going to be your implementation of the brilliant ideas that you have.
 
-This specific section is a source for the [plugin.xml](/src/main/resources/META-INF/plugin.xml) file which will be extracted by the [Gradle](/build.gradle.kts) during the build process.
+## Installation
 
-To keep everything working, do not remove `<!-- ... -->` sections. 
+Install Plugin from disk
+
+## Usage
+
+Open File > New > Other > Clean Architecture Packages.
+
+Set new feature name and submit.
+
+The plugin will create automatically all packages, classes and interfaces needed.
+
 <!-- Plugin description end -->
 
 ## Installation

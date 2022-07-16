@@ -3,11 +3,12 @@ package com.github.libliboom.customplugintemplate.template.utils
 import com.intellij.psi.PsiDirectory
 import com.intellij.psi.PsiFileFactory
 import org.jetbrains.kotlin.idea.KotlinLanguage
+import java.util.*
 
-fun String.asKt() = "${this.capitalize()}.kt"
+fun String.asKt() = "${this.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }}.kt"
 
 val camelRegex = "(?<=[a-zA-Z])[A-Z]".toRegex()
-fun String.toSnakeCase() = camelRegex.replace(this) { "_${it.value}" }.toLowerCase()
+fun String.toSnakeCase() = camelRegex.replace(this) { "_${it.value}" }.lowercase()
 
 fun String.save(srcDir: PsiDirectory, subDirPath: String, fileName: String) {
   try {

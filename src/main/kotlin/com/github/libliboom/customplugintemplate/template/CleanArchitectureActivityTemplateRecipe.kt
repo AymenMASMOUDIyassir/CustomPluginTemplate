@@ -17,27 +17,30 @@ fun RecipeExecutor.cleanArchFragmentTemplate(
   packageName: String,
   className: String
 ) {
-  val (projectData, _, _, manifestOut) = moduleData
+  val (_, _, _, _) = moduleData
   val project = projectInstance ?: return
 
   addAllKotlinDependencies(moduleData)
-  addPackageName(packageName+"."+className.lowercase(), projectData.applicationPackage.toString())
+  addPackageName(packageName+"."+className.replaceFirstChar { it.lowercase() })
 
   val pfm = ProjectFileManager(project)
   if (pfm.init().not()) return
 
-  createFragment(className = className, manifestOut = manifestOut, moduleData = moduleData)
+  createFragment(className = className, moduleData = moduleData)
     .save(pfm.dirOf(VIEW), PackageManager.viewPackageName, "${className}Fragment".asKt())
 
   createPresenter(className = className)
     .save(pfm.dirOf(PRESENTER), PackageManager.presenterPackageName, "${className}ViewModel".asKt())
 
 
-  createInteractorInput(className = className)
-    .save(pfm.dirOf(INTERACTOR), PackageManager.interactorPackageName, "${className}InteractorInput".asKt())
+  createInteractor(className = className)
+    .save(pfm.dirOf(INTERACTOR), PackageManager.interactorPackageName, "${className}Interactor".asKt())
 
-  createInteractorOutput(className = className)
-    .save(pfm.dirOf(INTERACTOR), PackageManager.interactorPackageName, "${className}InteractorOutput".asKt())
+  createInteractorInterface(className = className)
+    .save(pfm.dirOf(INTERACTOR), PackageManager.interactorPackageName, "${className}InteractorInterface".asKt())
+
+  createInteractorDependenciesInterface(className = className)
+    .save(pfm.dirOf(INTERACTOR), PackageManager.interactorPackageName, "${className}InteractorDependenciesInterface".asKt())
 
   createInteractorModel(className = className)
     .save(pfm.dirOf(MODEL), PackageManager.interactorModelPackageName, "${className}ItemInterface".asKt())
